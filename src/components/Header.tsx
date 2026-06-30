@@ -26,7 +26,7 @@ export default function Header({ activeSection, onNavigate, onOpenResumeModal }:
     { id: 'projects', label: 'Projects', icon: Code },
     { id: 'experience', label: 'Experience', icon: Briefcase },
     { id: 'skills', label: 'Skills', icon: Award },
-    { id: 'blog', label: 'Blog', icon: BookOpen },
+   // { id: 'blog', label: 'Blog', icon: BookOpen },
     { id: 'contact', label: 'Contact', icon: MessageSquare }
   ];
 

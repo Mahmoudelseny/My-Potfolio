@@ -31,7 +31,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
           {/* Quick links */}
           <div className="flex flex-wrap justify-center gap-6 text-sm font-medium text-zinc-400">
-            {['hero', 'projects', 'experience', 'skills', 'blog', 'contact'].map((section) => (
+            {['hero', 'projects', 'experience', 'skills', 'contact'].map((section) => (
               <button
                 key={section}
                 onClick={() => onNavigate(section)}
@@ -76,8 +76,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-600">
           <p>© {year} {PERSONAL_INFO.name}. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            <Sparkles className="w-3 h-3 text-indigo-400 animate-pulse" />
-            Designed with precision in Egypt
+            <Sparkles className="w-3 h-3 text-indigo-400 animate-pulse" />            Designed with precision in Egypt
           </p>
         </div>
       </div>

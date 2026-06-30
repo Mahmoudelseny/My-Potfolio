@@ -44,7 +44,8 @@ export default function Hero({ onNavigate, onOpenResumeModal }: HeroProps) {
             </h1>
 
             <p className="text-lg text-zinc-300 leading-relaxed max-w-2xl font-sans">
-              I am <strong className="text-white font-semibold">{PERSONAL_INFO.name}</strong>, a Software Engineer specializing in modern full-stack web architectures and high-fidelity mobile apps. Using <span className="text-indigo-400 font-medium">React</span> and <span className="text-violet-400 font-medium">Flutter</span>, I turn complex requirements into robust and polished interfaces.
+              I am <strong className="text-white font-semibold">{PERSONAL_INFO.name}</strong>, a Software Engineer specializing in web and mobile application development. I hold a Bachelor's degree in Computers and Artificial Intelligence, specializing in Software Engineering. Passionate about building scalable, high-performance applications, I work with technologies like React, Flutter, Node.js, and Java EE to create modern, user-focused digital solutions with clean, maintainable code.
+
             </p>
 
             {/* Quick Skills Pills */}
