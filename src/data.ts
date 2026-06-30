@@ -184,7 +184,7 @@ export const EXPERIENCE_HISTORY: ExperienceItem[] = [
     id: 'exp-innovation',
     role: 'Web Developer',
     company: 'Innovation Details HOLDING',
-    companyUrl: 'https://inovation-holding.app',
+    companyUrl: 'https://www.innovationdetails.co.uk/',
     date: '05/2026',
     description: 'Holding & innovation-driven business group.',
     bulletPoints: [
