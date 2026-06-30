@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom fade-in micro animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Print styles to isolate CV during window.print() */
+@media print {
+  /* Hide all main portfolio website layers */
+  body, #root, #portfolio-app, main, header, footer, #portfolio-header, .print\:hidden {
+    background: white !important;
+    color: black !important;
+    display: none !important;
+  }
+
+  /* Make only the ResumeModal print layer visible and fullwidth */
+  div.fixed.inset-0.z-50 {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 99999 !important;
+  }
+
+  div.fixed.inset-0.z-50 > div {
+    border: none !important;
+    box-shadow: none !important;
+    max-height: none !important;
+    width: 100% !important;
+    height: auto !important;
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* Print details adjustment */
+  div.fixed.inset-0.z-50 .bg-zinc-900,
+  div.fixed.inset-0.z-50 .bg-zinc-950,
+  div.fixed.inset-0.z-50 .bg-zinc-950\/50 {
+    background: white !important;
+    border: none !important;
+    color: black !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  div.fixed.inset-0.z-50 h1,
+  div.fixed.inset-0.z-50 h2,
+  div.fixed.inset-0.z-50 h3,
+  div.fixed.inset-0.z-50 h4,
+  div.fixed.inset-0.z-50 p,
+  div.fixed.inset-0.z-50 span,
+  div.fixed.inset-0.z-50 li {
+    color: #0c0a09 !important; /* Stone 950 */
+  }
+
+  /* Force borders to be light grey or black in printing */
+  div.fixed.inset-0.z-50 .border-b,
+  div.fixed.inset-0.z-50 .border-t {
+    border-color: #e4e4e7 !important; /* Zinc 200 */
+  }
+
+  /* Avoid splitting experiences inside pages */
+  .break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
