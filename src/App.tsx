@@ -8,6 +8,7 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
+import FloatingParticles from './components/FloatingParticles';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -50,11 +51,12 @@ export default function App() {
   }, []);
 
   return (
-    <div id="portfolio-app" className="bg-zinc-950 text-zinc-100 min-h-screen font-sans selection:bg-emerald-500/30 selection:text-emerald-300">
-      {/* Background ambient radial glows */}
+    <div id="portfolio-app" className="bg-zinc-950 text-zinc-100 min-h-screen font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
+      {/* Background ambient radial glows & drifting particles */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-emerald-500/[0.02] rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-teal-500/[0.02] rounded-full blur-[120px]"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[55%] bg-violet-600/[0.045] rounded-full blur-[140px]"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[55%] h-[55%] bg-indigo-500/[0.045] rounded-full blur-[140px]"></div>
+        <FloatingParticles />
       </div>
 
       {/* Main navigation header */}

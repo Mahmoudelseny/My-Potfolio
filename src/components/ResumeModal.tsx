@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { X, Printer, Download, Copy, CheckCircle, Mail, Phone, MapPin, Github, FileText, AlertCircle, Linkedin } from 'lucide-react';
+import { X, Printer, Copy, CheckCircle, Mail, Phone, MapPin, Github, FileText, AlertCircle, Linkedin } from 'lucide-react';
+import { motion } from 'motion/react';
 import { PERSONAL_INFO, EXPERIENCE_HISTORY } from '../data';
 
 interface ResumeModalProps {
@@ -81,13 +82,22 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-zinc-950/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fade-in print:bg-white print:p-0">
-      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-4xl shadow-2xl relative flex flex-col max-h-[92vh] print:border-none print:shadow-none print:max-h-none print:static print:w-full print:h-full print:bg-white">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="fixed inset-0 z-50 overflow-y-auto bg-zinc-950/90 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 print:bg-white print:p-0"
+    >
+      <motion.div 
+        initial={{ scale: 0.95, y: 15 }}
+        animate={{ scale: 1, y: 0 }}
+        transition={{ type: 'spring', damping: 25, stiffness: 180 }}
+        className="bg-zinc-900 border border-zinc-855 border-zinc-800 rounded-2xl w-full max-w-4xl shadow-2xl relative flex flex-col max-h-[92vh] print:border-none print:shadow-none print:max-h-none print:static print:w-full print:h-full print:bg-white"
+      >
         
         {/* Modal Controls (Hidden during print) */}
         <div className="p-4 bg-zinc-950 border-b border-zinc-850 flex items-center justify-between gap-4 print:hidden">
           <div className="flex items-center gap-2">
-            <FileText className="w-5 h-5 text-emerald-500" />
+            <FileText className="w-5 h-5 text-indigo-400" />
             <h3 className="text-sm sm:text-base font-bold text-white font-mono uppercase tracking-wider">
               Mahmoud's Curriculum Vitae
             </h3>
@@ -96,7 +106,7 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold px-3.5 py-2 rounded-xl text-xs transition-all cursor-pointer shadow-md shadow-emerald-500/10"
+              className="flex items-center gap-1.5 bg-indigo-500 hover:bg-indigo-400 text-white font-bold px-3.5 py-2 rounded-xl text-xs transition-all cursor-pointer shadow-md shadow-indigo-500/10"
               title="Print CV or Save as PDF"
             >
               <Printer className="w-4 h-4" />
@@ -110,7 +120,7 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
             >
               {copied ? (
                 <>
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <CheckCircle className="w-4 h-4 text-indigo-450 text-indigo-400" />
                   Copied!
                 </>
               ) : (
@@ -141,7 +151,7 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
                 <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white print:text-zinc-950 uppercase">
                   {PERSONAL_INFO.name}
                 </h1>
-                <p className="text-lg font-mono font-bold text-emerald-400 uppercase tracking-wider print:text-zinc-700">
+                <p className="text-lg font-mono font-bold text-indigo-400 uppercase tracking-wider print:text-zinc-700">
                   {PERSONAL_INFO.title}
                 </p>
               </div>
@@ -149,33 +159,33 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
               {/* Contact grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-zinc-300 font-mono print:text-zinc-700">
                 <span className="flex items-center gap-1.5 hover:text-white">
-                  <Mail className="w-3.5 h-3.5 text-emerald-500 print:text-zinc-600" />
+                  <Mail className="w-3.5 h-3.5 text-indigo-400 print:text-zinc-600" />
                   {PERSONAL_INFO.email}
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-emerald-500 print:text-zinc-600" />
+                  <Phone className="w-3.5 h-3.5 text-indigo-400 print:text-zinc-600" />
                   {PERSONAL_INFO.phone}
                 </span>
                 <span className="flex items-center gap-1.5 col-span-1 sm:col-span-2">
-                  <MapPin className="w-3.5 h-3.5 text-emerald-500 print:text-zinc-600" />
+                  <MapPin className="w-3.5 h-3.5 text-indigo-400 print:text-zinc-600" />
                   {PERSONAL_INFO.location}
                 </span>
                 <a
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-1.5 hover:text-white text-emerald-400 print:text-zinc-700 col-span-1 print:no-underline"
+                  className="flex items-center gap-1.5 hover:text-white text-indigo-400 print:text-zinc-700 col-span-1 print:no-underline"
                 >
-                  <Github className="w-3.5 h-3.5 text-emerald-500 print:text-zinc-600" />
+                  <Github className="w-3.5 h-3.5 text-indigo-400 print:text-zinc-600" />
                   {PERSONAL_INFO.github.replace('https://', '')}
                 </a>
                 <a
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-1.5 hover:text-white text-emerald-400 print:text-zinc-700 col-span-1 print:no-underline"
+                  className="flex items-center gap-1.5 hover:text-white text-indigo-400 print:text-zinc-700 col-span-1 print:no-underline"
                 >
-                  <Linkedin className="w-3.5 h-3.5 text-emerald-500 print:text-zinc-600" />
+                  <Linkedin className="w-3.5 h-3.5 text-indigo-400 print:text-zinc-600" />
                   {PERSONAL_INFO.linkedin.replace('https://www.', '').replace('https://', '')}
                 </a>
               </div>
@@ -183,7 +193,7 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
 
             {/* Profile section */}
             <div className="space-y-3">
-              <h2 className="text-sm font-mono font-black uppercase tracking-widest text-emerald-400 print:text-zinc-800 border-b border-zinc-900 pb-1.5 print:border-zinc-200">
+              <h2 className="text-sm font-mono font-black uppercase tracking-widest text-indigo-400 print:text-zinc-800 border-b border-zinc-900 pb-1.5 print:border-zinc-200">
                 Professional Profile
               </h2>
               <p className="text-sm sm:text-base text-zinc-300 leading-relaxed print:text-zinc-800">
@@ -193,7 +203,7 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
 
             {/* Education section */}
             <div className="space-y-3">
-              <h2 className="text-sm font-mono font-black uppercase tracking-widest text-emerald-400 print:text-zinc-800 border-b border-zinc-900 pb-1.5 print:border-zinc-200">
+              <h2 className="text-sm font-mono font-black uppercase tracking-widest text-indigo-400 print:text-zinc-800 border-b border-zinc-900 pb-1.5 print:border-zinc-200">
                 Education
               </h2>
               <div className="text-sm print:text-zinc-800">
@@ -208,7 +218,7 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
 
             {/* Experience section */}
             <div className="space-y-4">
-              <h2 className="text-sm font-mono font-black uppercase tracking-widest text-emerald-400 print:text-zinc-800 border-b border-zinc-900 pb-1.5 print:border-zinc-200">
+              <h2 className="text-sm font-mono font-black uppercase tracking-widest text-indigo-400 print:text-zinc-800 border-b border-zinc-900 pb-1.5 print:border-zinc-200">
                 Professional Experience
               </h2>
               
@@ -222,7 +232,7 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
                           <span className="text-xs font-normal text-zinc-400 print:text-zinc-600">[{exp.company}]</span>
                         </h3>
                       </div>
-                      <span className="text-xs font-mono text-emerald-400 font-bold print:text-zinc-600 whitespace-nowrap">
+                      <span className="text-xs font-mono text-indigo-400 font-bold print:text-zinc-600 whitespace-nowrap">
                         {exp.date}
                       </span>
                     </div>
@@ -244,13 +254,13 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
               
               {/* Left Column: Skills list */}
               <div className="space-y-3">
-                <h2 className="text-xs font-mono font-black uppercase tracking-widest text-emerald-400 print:text-zinc-800 pb-1">
+                <h2 className="text-xs font-mono font-black uppercase tracking-widest text-indigo-400 print:text-zinc-800 pb-1">
                   Skills & Proficiencies
                 </h2>
                 <div className="grid grid-cols-2 gap-2 text-xs text-zinc-300 print:text-zinc-800">
                   {PERSONAL_INFO.skills.map((s) => (
                     <div key={s.name} className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 print:bg-zinc-600"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 print:bg-zinc-600"></span>
                       <span>{s.name}</span>
                     </div>
                   ))}
@@ -259,7 +269,7 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
 
               {/* Right Column: Spoken Languages */}
               <div className="space-y-3">
-                <h2 className="text-xs font-mono font-black uppercase tracking-widest text-emerald-400 print:text-zinc-800 pb-1">
+                <h2 className="text-xs font-mono font-black uppercase tracking-widest text-indigo-400 print:text-zinc-800 pb-1">
                   Spoken Languages
                 </h2>
                 <div className="space-y-2 text-xs text-zinc-300 print:text-zinc-800">
@@ -278,13 +288,13 @@ ${exp.bulletPoints.map((bullet) => `* ${bullet}`).join('\n')}
 
           {/* Quick tip */}
           <div className="max-w-3xl mx-auto mt-6 p-4 bg-zinc-950/20 border border-zinc-850 rounded-xl flex items-center gap-2.5 text-xs text-zinc-500 font-mono print:hidden">
-            <AlertCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+            <AlertCircle className="w-4 h-4 text-indigo-400 shrink-0" />
             <span>Tip: Clicking "Print / Save PDF" opens the default browser dialog where you can choose "Save as PDF" to download a clean, formatted copy.</span>
           </div>
 
         </div>
 
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
